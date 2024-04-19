@@ -2,6 +2,10 @@
 
 Welcome to the **Magic Transporters API**! Dive into the future of logistics with our cutting-edge transporters that utilize virtual magic to move things easily and efficiently.
 
+## Postman Collection
+For testing the API, you can download the Postman collection using the link below:
+
+[Download Magic Transporters API POSTMAN Collection](https://github.com/somarkn99/magic-transporters/blob/main/Magic%20Transporters%20API%20POSTMAN%20Collection.json)
 ## Getting Started
 
 This guide will help you set up and run the Magic Transporters API on your local machine for development and testing purposes.
