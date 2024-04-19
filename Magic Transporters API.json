@@ -1,0 +1,348 @@
+{
+	"info": {
+		"_postman_id": "9971d7c1-ddb5-481c-a262-0971e6245fda",
+		"name": "Magic Transporters API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18937057",
+		"_collection_link": "https://somarkn99.postman.co/workspace/ElectroMall~7782fbbd-8081-4f7f-b891-3a7af55323cb/collection/18937057-9971d7c1-ddb5-481c-a262-0971e6245fda?action=share&source=collection_link&creator=18937057"
+	},
+	"item": [
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Store Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"laptop\",\n    \"weight\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/items",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"laptop\",\n    \"weight\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/items",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"laptop\",\n    \"weight\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/items/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6621a5e83eda23efdb9c75cf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/items/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6621a5e83eda23efdb9c75cf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"laptop 2\",\n    \"weight\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/items/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6621a5e83eda23efdb9c75cf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mover",
+			"item": [
+				{
+					"name": "Get ALl Movers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/movers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"movers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Load a Magic Mover with Items",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemId\": \"item123\",\n    \"weight\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/movers/:moverId/load",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"movers",
+								":moverId",
+								"load"
+							],
+							"variable": [
+								{
+									"key": "moverId",
+									"value": "6621a4bd3eda23efdb9c75cc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Magic Mover",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weightLimit\": 500,\n    \"energy\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/movers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"movers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Movers by Completed Missions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/movers/missions",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"movers",
+								"missions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mission",
+			"item": [
+				{
+					"name": "Start a Mission",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/movers/:moverId/start-mission",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"movers",
+								":moverId",
+								"start-mission"
+							],
+							"variable": [
+								{
+									"key": "moverId",
+									"value": "6621a4bd3eda23efdb9c75cc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "End a Mission",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/movers/:moverId/end-mission",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"movers",
+								":moverId",
+								"end-mission"
+							],
+							"variable": [
+								{
+									"key": "moverId",
+									"value": "6621a4bd3eda23efdb9c75cc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
