@@ -32,7 +32,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Set a global prefix for all routes
-app.use('/api/v1', setupRoutes);
+setupRoutes(app);
 
 app.use(errorHandler);
 
