@@ -28,9 +28,11 @@ const limiter = rateLimit({
     'Too many requests from this IP, please try again after a while',
 });
 
+// Apply the rate limiter to all requests
+app.use(limiter);
 
-app.use('/movers', limiter, moverRoutes);
-app.use('/items', limiter, itemRoutes);
+app.use('/movers', moverRoutes);
+app.use('/items', itemRoutes);
 
 app.all('*', (req: Request, res: Response) => {
   logger.warn(`404 - Not Found: ${req.originalUrl}`);
