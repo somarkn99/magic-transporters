@@ -16,10 +16,14 @@ class MoverService {
     }
   }
 
-  async getAllMovers(){
-    return await Mover.find().lean();
-  }
-
+  async getAllMovers(page = 1, limit = 10) {
+    const skip = (page - 1) * limit;
+    return {
+      movers: await Mover.find().limit(limit).skip(skip).lean(),
+      total: await Mover.countDocuments()
+    };
+  }  
+  
   async loadMover(moverId: string, itemId: string, itemWeight: number) {
     const mover = await Mover.findById(moverId);
     if (!mover) {

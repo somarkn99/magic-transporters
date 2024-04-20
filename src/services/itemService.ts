@@ -12,8 +12,12 @@ class ItemService {
     }
   }
 
-  async getAllItems() {
-    return await Item.find().lean();
+  async getAllItems(page = 1, limit = 10) {
+    const skip = (page - 1) * limit; // Calculate the number of items to skip
+    return {
+      items: await Item.find().limit(limit).skip(skip).lean(),
+      total: await Item.countDocuments() // Count total documents for pagination info
+    };
   }
 
   async getItemById(itemId: string) {

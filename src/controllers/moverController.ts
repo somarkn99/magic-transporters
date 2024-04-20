@@ -13,8 +13,16 @@ export const addMover = async (req: Request, res: Response) => {
 
 export const getMovers = async (req: Request, res: Response) => {
   try {
-    const movers = await moverService.getAllMovers();
-    res.json(movers);
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+
+    const result = await moverService.getAllMovers(page, limit);
+    res.json({
+      data: result.movers,
+      total: result.total,
+      page,
+      totalPages: Math.ceil(result.total / limit)
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

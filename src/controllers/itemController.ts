@@ -12,12 +12,21 @@ export const addItem = async (req: Request, res: Response) => {
 
 export const getItems = async (req: Request, res: Response) => {
   try {
-    const items = await itemService.getAllItems();
-    res.json(items);
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+    
+    const result = await itemService.getAllItems(page, limit);
+    res.json({
+      data: result.items,
+      total: result.total,
+      page,
+      totalPages: Math.ceil(result.total / limit)
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 export const getItem = async (req: Request, res: Response) => {
   try {
