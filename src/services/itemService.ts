@@ -1,8 +1,9 @@
 import { Item } from '../models/Item';
 import { MagicItem } from '../interfaces/MagicItem';
+import { ItemDTO, PaginatedResult, PaginationParams } from '../interfaces/DTOs/ItemDTO';
 
 class ItemService {
-  async createItem(data: MagicItem) {
+  async createItem(data: ItemDTO): Promise<MagicItem> {
     try {
       const newItem = new Item(data);
       await newItem.save();
@@ -12,11 +13,15 @@ class ItemService {
     }
   }
 
-  async getAllItems(page = 1, limit = 10) {
-    const skip = (page - 1) * limit; // Calculate the number of items to skip
+  async getAllItems({ page, limit }: PaginationParams): Promise<PaginatedResult<MagicItem>> {
+    const skip = (page - 1) * limit;
+    const items = await Item.find().limit(limit).skip(skip).lean();
+    const total = await Item.countDocuments();
     return {
-      items: await Item.find().limit(limit).skip(skip).lean(),
-      total: await Item.countDocuments() // Count total documents for pagination info
+      data: items,
+      total,
+      page,
+      totalPages: Math.ceil(total / limit)
     };
   }
 
