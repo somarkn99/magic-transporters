@@ -8,8 +8,8 @@ import errorHandler from './middleware/errorHandlingMiddleware';
 import logger from './config/logger';
 import {dbConnection} from './config/database';
 import {clearAndGenerateData} from './config/scripts/generateFakeData';
-import moverRoutes from './routes/moverRoutes';
-import itemRoutes from './routes/itemRoutes';
+
+import setupRoutes from './routes/routes';
 
 dotenv.config({ path: './.env' });
 
@@ -31,16 +31,8 @@ const limiter = rateLimit({
 // Apply the rate limiter to all requests
 app.use(limiter);
 
-app.use('/movers', moverRoutes);
-app.use('/items', itemRoutes);
-
-app.all('*', (req: Request, res: Response) => {
-  logger.warn(`404 - Not Found: ${req.originalUrl}`);
-  res.status(404).json({
-    status: 'fail',
-    message: `Can't find ${req.originalUrl} on this server!`
-  });
-});
+// Set a global prefix for all routes
+app.use('/api/v1', setupRoutes);
 
 app.use(errorHandler);
 
